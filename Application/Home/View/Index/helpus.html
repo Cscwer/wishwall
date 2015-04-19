@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="zh" >
+  <head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <!-- If you delete this meta tag World War Z will become a reality -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 ,user-scalable=0"/>
+    <title>意见反馈</title>
+    <!-- If you are using the CSS version, only link these 2 files, you may add app.css to use for your overrides if you like -->
+    <link rel="stylesheet" href="__STYLE__/css/normalize.css">
+    <link rel="stylesheet" href="__STYLE__/css/fonts/foundation-icons.css">
+    <link rel="stylesheet" href="__STYLE__/css/foundation.min.css">
+    <!-- This is how you would link your custom stylesheet -->
+     <link rel="stylesheet" href="__STYLE__/css/app.css?foobar">
+    <script src="__STYLE__/js/foundationjs/vendor/modernizr.js"></script>
+  </head>
+  <body>
+    <div class="off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+        <nav class="tab-bar clearfix">
+          <section class="left-small left-off-canvas-toggle clearfix" aria-expanded="false">
+              <a class="menu-icon" href="#">
+                  <span>导航</span>
+              </a>
+          </section> 
+        </nav>
+        <!-- Off Canvas Menu -->
+        <!--侧边栏-->
+        <aside class="left-off-canvas-menu">
+          <!-- whatever you want goes here -->
+            <div class="row left-off-person-info">
+              <div class="headpic">
+                <!-- <img src="" alt="" class="face-radius" />
+                <span class="person-name">Aeo</span> -->
+              </div>
+            </div>
+            <ul class="off-canvas-list">
+                <li class="canvas-home ">首页</li>
+                <li class="canvas-personal">个人中心</li>
+                <li class="canvas-aboutUs">关于我们</li>
+                <li class="canvas-help canvas-current">意见反馈</li>
+            </ul>
+            <div class="row settings">
+                <span class="message-icon"></span>
+            </div>
+        </aside>
+
+        <!-- main content goes here -->
+        <div class="page_container main-section ">
+          <div class="row page-current page1">
+            <div class="small-12 columns">
+              <!-- 意见反馈标志 -->
+              <div class="row writewish">
+                <br/>
+                <div class="small-12 columns small-centered large-uncentered">
+                  <a href="#">意见反馈</a>
+                </div>
+                <br/>
+              </div>
+              <!-- 意见反馈Textarea -->
+              <div class="row">
+                <div class="small-11 small-centered large-8 large-centered columns writemywish-div">
+                  <label>
+                    <textarea class="writemywish" id="mysuggest" maxlength="200" placeholder="请在这里填写您在使用过程中遇到的问题或您想对我们提的意见和建议，谢谢！（200字以内，而且 5 分钟内只能提交一次哦。）"></textarea>
+                  </label>
+                </div>
+              </div> 
+              <br/>
+              <!-- 填写愿望 -->
+              <div class="row">
+                <div class="small-11 small-centered large-8 large-centered columns writemywish-div">
+                  <label>
+                    <span>您的邮箱:</span>
+                    <input required="repuired" id="email" type="email" placeholder="必填，格式为xxx@xx.com">
+                  </label>
+                </div>
+              </div> 
+              <br/>                  
+              <!-- 确认提交 -->
+              <div class="row wishwall-nextbutton-container">
+                <div class="small-12 columns wishwall-nextbutton">
+                  <a class="bt1-suggest" href="#">确认提交</a>
+                  <a class="bt1 finish" href="">切换页面</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row sub-page2 page2">
+            <div class="small-12 columns">
+              <!-- 提交成功界面 -->
+              <div class="row writewish">
+                <br/>
+                <div class="small-12 columns feedback-s small-centered large-uncentered">
+                  <a href="#">意见提交成功！感谢您的意见反馈！</a>
+                </div>
+                <br/>
+              </div>
+              <!-- 返回首页按钮 -->
+              <div class="row wishwall-nextbutton-container">
+                <div class="small-12 columns wishwall-nextbutton">
+                  <a href="/homepage">返回首页</a>
+                </div>
+              </div>
+            </div> 
+          </div>
+        </div>
+        <a class="exit-off-canvas"></a>
+        <!--提示框-->
+        <include file="./Application/Home/View/User/attention.html" />
+      </div>
+    </div>
+    <script src="__STYLE__/js/foundationjs/vendor/jquery.js"></script>
+    <script src="__STYLE__/js/foundationjs/foundation/foundation.js"></script>
+    <script src="__STYLE__/js/foundationjs/foundation/foundation.offcanvas.js"></script>
+    <script src="__STYLE__/js/getjson.js"></script>
+    <script src="__STYLE__/js/script.js"></script>
+    <script src="__STYLE__/js/aside.js"></script>
+    <script>
+      $(document).foundation();
+      $(document).ready(function() {
+          getjson('GET','/myInfo',null,setMail,error);
+      });
+              //帮助与反馈
+      $('.canvas-help').click(function() {
+          window.location.href = '/help';
+      });
+
+      //填充邮箱
+      var setMail = function(result) {
+          if(result.result === 'ERROR' || !result.data.info.email){
+              return;
+          }
+          $('#email').val(result.data.info.email);
+      };
+
+      var sum = true;
+      $('.bt1-suggest').click(function() {
+          if(!sum){
+            promptError('童鞋莫急,慢慢来');
+            return false;
+          }
+          sum = false;
+          var content = htmlfilter($('#mysuggest').val());
+          var email  = htmlfilter($('#email').val());
+          if(checkContent(content) && isEmail(email)){
+            var data = {};
+                data.suggcontent = content;
+                data.email = email;
+            getjson('POST','/Users/suggest',data,suggestsn,error);
+          }
+          else{
+            promptError('童鞋请仔细检查你的信息哦');
+          }         
+          setTimeout(function(){
+            sum = true;
+          },5000);
+
+      });
+      //意见反馈成功后的回调函数
+      var suggestsn = function(result){
+          if(result.result === 'ERROR'){
+            promptError('提交失败啦~~');
+            return;
+          }
+          else{
+             $('a.finish').trigger('click');
+          }
+      };
+      var error = function(result) {
+          console.log(result);
+      }
+      //检测字数是否满足
+      var checkContent = function(content) {
+          if(!content|| content.length > 200) {
+            return false;
+          }
+          return true;
+      };
+      //检测是否是email
+      var isEmail = function(email){
+          var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+          return reg.test(email); 
+      };
+    </script>
+  </body>
+</html>

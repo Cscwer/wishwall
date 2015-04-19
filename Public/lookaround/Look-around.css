@@ -1,0 +1,41 @@
+.Look-around {
+	width:125px;
+	height: 125px;
+	background-image: url("a.jpg");
+}
+
+
+/*只有上面部分是必要的css效果，下面的可有可无*/
+.peoplebox {
+	width: 100%;
+	margin: 0 auto ;
+}
+li {display: inline-block;}
+
+.Look-around {
+	
+	/*margin: 1em  3em  ;*/
+}
+.offsetleft {
+	margin-left: 0em;
+}
+.offsetright {
+	margin-right: 0em;
+}
+body {
+	background-color: #FFF;
+
+}
+
+h3,p,pre {
+	color: #fff;
+}
+
+.example {
+	background-image: url("a.jpg") ;
+	background-repeat: no-repeat;
+	background-size: 50%;
+	width: auto;
+	height: 125px;
+
+}

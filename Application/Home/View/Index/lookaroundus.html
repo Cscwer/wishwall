@@ -1,0 +1,117 @@
+﻿<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1 maximum-scale=1">
+    <title>The Founder</title>
+    <link rel="stylesheet" href="__STYLE__/lookaround/Look-around.css">
+</head>
+<body>
+
+<div class="peoplebox">
+    <ul>
+        <li><div class="Look-around offsetleft"></div></li>
+        <li><div class="Look-around"></div></li>
+        <li>
+            <div class="Look-around offsetright"></div>
+        </li>
+        <li>
+            <div class="Look-around"></div>
+        </li>
+        <li>
+            <div class="Look-around"></div>
+        </li>
+        <li>
+            <div class="Look-around"></div>
+        </li>
+        <li>
+            <div class="Look-around"></div>
+        </li>
+        <li>
+            <div class="Look-around offsetleft"></div>
+        </li>
+        <li>
+            <div class="Look-around"></div>
+        </li>
+        <li>
+            <div class="Look-around"></div>
+        </li>
+    </ul>
+    </div>
+     <script src="__STYLE__/js/foundationjs/vendor/jquery.js"></script>
+    <script src='__STYLE__/lookaround/Look-around.js' type="text/javascript"></script>
+<script type="text/javascript">
+    window.onload = function(){
+
+        var div = $("body");
+        var updown;
+        var leftright;
+        var show = '';
+        var flag = 1;
+        var old_x = 0;
+        var old_y = 0;
+        var ychange = -45;
+        window.ondeviceorientation =  function(e) 
+        {
+            r_x = e.gamma - old_x;
+            r_y = e.beta + ychange - old_y;
+           if(Math.abs(r_x)>=5||Math.abs(r_y)>=5)
+           {
+             old_x = e.gamma;
+             old_y = e.beta + ychange; 
+
+           
+            if((e.beta + ychange>>0)>20)updown="下";else if ((e.beta + ychange>>0)<-15)updown="上";else updown=" ";
+            if((e.gamma>>0)>20)leftright="右";else if ((e.gamma>>0)<-15)leftright="左";else leftright=" ";
+            switch(updown+leftright)
+            {
+            
+                case " 右" :
+                changeAll(4);
+                break;
+                case "下右" :
+                changeAll(3);
+                break;
+                case "下 " :
+                changeAll(2);
+                break;
+                case "下左" :
+                changeAll(1);
+                break;
+                case " 左" :
+                changeAll(0);
+                break;
+                case "上左" :
+                changeAll(7);
+                break;
+                case "上 " :
+                changeAll(6);
+                break;
+                case "上右" :
+                changeAll(5);
+                break;
+
+             default:
+                changeAll(8);
+            } 
+            
+            
+          }
+        }
+
+
+        div.ontouchstart = function(e)
+        {   
+            flag =0;
+        }
+        
+        div.ontouchcancel = function(e)
+        {
+            flag =1;
+        }
+
+}
+</script>
+
+</body></html>

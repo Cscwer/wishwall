@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>许愿墙</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=0">
+    <link rel="stylesheet" href="__STYLE__/css/app.css">
+    <link rel="stylesheet" href="__STYLE__/css/foundation.css">
+        <!-- This is how you would link your custom stylesheet -->
+    <link rel="stylesheet" href="__STYLE__/css/app.css">
+    <script src="__STYLE__/js/foundationjs/vendor/modernizr.js"></script>
+</head>
+<style>
+</style>
+<body>
+	<div class="row">
+        <ul data-orbit>
+            <li>
+                <img src="__STYLE__/images/wishwall1.jpg" alt="slide 1" />
+                
+            </li>
+            <li class="active">
+                <img src="__STYLE__/images/wishwall2.jpg" alt="slide 2" />
+               
+            </li>
+            <li>
+                <img src="__STYLE__/images/wishwall3.jpg" alt="slide 3" />
+                <div class="orbit-caption">男生们快沸腾起来吧！</div>
+                <a href="/homepage" class="homepage"></a>
+            </li>
+        </ul>
+    </div>
+    <script src="__STYLE__/js/foundationjs/vendor/jquery.js"></script>
+     <script src="__STYLE__/js/foundationjs/foundation.min.js"></script>
+    <script>
+    	$(document).foundation({
+            orbit: {
+                circular: false
+            }
+        });
+        $(function() {
+          //获得页面可见高度
+          var oHeight = document.documentElement.clientHeight;
+          //一次登录页面高度自适应
+          $('img').height(oHeight);
+        })
+    </script>
+</body>
+</html>

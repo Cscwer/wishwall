@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="zh" >
+    <head>
+        <meta charset="utf-8">
+        <!-- If you delete this meta tag World War Z will become a reality -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=0" />
+        <title>广工女生节许愿墙</title>
+        <!-- If you are using the CSS version, only link these 2 files, you may add app.css to use for your overrides if you like -->
+        <link rel="stylesheet" href="__STYLE__/css/normalize.css">
+        <link rel="stylesheet" href="__STYLE__/css/fonts/foundation-icons.css">
+        <link rel="stylesheet" href="__STYLE__/css/foundation.css">
+        <!-- This is how you would link your custom stylesheet -->
+         <link rel="stylesheet" href="__STYLE__/css/app.css?foobar">
+        <script src="__STYLE__/js/foundationjs/vendor/modernizr.js"></script>
+    </head>
+    <body>
+     <!-- body content here -->
+        <div class="wrap-page">
+            <div class="row page-current page1">
+                <div class="large-12 small-12 columns">
+                    <div class="off-canvas-wrap" data-offcanvas>
+                        <div class="inner-wrap">
+                            <nav class="tab-bar clearfix">
+                                <section class="left-small left-off-canvas-toggle clearfix" aria-expanded="false">
+                                    <a class="menu-icon" href="#">
+                                        <span>导航</span>
+                                    </a>
+                                </section> 
+                                <section class="right-small clearfix">
+                                    <i class="fi-heart"></i>
+                                    <span>许愿</span>
+                                </section>
+                            </nav> 
+                            <!-- Off Canvas Menu -->
+                           <!--侧边栏-->
+                            <aside class="left-off-canvas-menu">
+                            <!-- whatever you want goes here -->
+                                <div class="row left-off-person-info">
+                                  <div class="headpic">
+                                    <!-- <img src="" alt="" class="face-radius" />
+                                    <span class="person-name">Aeo</span> -->
+                                  </div>
+                                </div>
+                                <ul class="off-canvas-list">
+                                    <li class="canvas-home canvas-current">首页</li>
+                                    <li class="canvas-personal">个人中心</li>
+                                    <li class="canvas-aboutUs">关于我们</li>
+                                    <li class="canvas-help ">意见反馈</li>
+                                </ul>
+                                <div class="row settings">
+                                    <span class="message-icon"></span>
+                                </div>
+                            </aside>
+                            <!-- main content goes here -->
+                            <section class="main-section">
+                                <div class="row">
+                                    <ul data-orbit>
+                                        <li>
+                                            <img src="__STYLE__/images/orbit1.jpg" alt="slide 1" />
+                                        </li>
+                                        <li class="active">
+                                            <img src="__STYLE__/images/orbit2.jpg" alt="slide 2" />
+                                        </li>
+                                        <li>
+                                            <img src="__STYLE__/images/orbit3.jpg" alt="slide 3" />
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="row">
+                                  <div class="small-12 columns adminMessage">
+                                    <i class="fi-volume"></i>
+                                    <ul class="adminMessageUl">
+                                      <li><span>还剩不到 1 小时了喔，谢谢菇凉们的使用啦。</span></li>
+                                      <li><span>记得去「个人中心」保存少侠们的信息喔。</span></li>
+                                      <li><span>再次表达谢意，祝菇凉们女生节快乐！</span></li>
+                                    </ul>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                    <div class="wish-list-area">
+                                          <ul class="select-wish-type">
+                                            <li class="type-all" value="all-type">不限</li>
+                                            <li class="type-time" value="2">耗时型</li>
+                                            <li class="type-thing" value="1">实物型</li>
+                                            <p>筛选</p>
+                                            <ul class="screen-campus">
+                                                <li value="all-campus">不限</li>
+                                                <li value="大学城">大学城校区</li>
+                                                <li value="东风路">东风路校区</li>
+                                                <li value="龙洞">龙洞校区</li>
+                                                <li value="番禺">番禺校区</li>
+                                            </ul>
+                                        </ul>
+                                            <nav class="clearfix">
+                                                <span>愿望列表</span>
+                                                <div class="search-box right">
+                                                    <input type="text" placeholder="搜索" class="search"/>
+                                                    <a href="#">
+                                                        <i class="fi-magnifying-glass"></i>
+                                                    </a>
+                                                </div>
+                                            </nav>
+                                            <ul class="wish-list">
+                                            </ul>
+                                        <!--分页功能-->
+                                        <!--底部分页-->
+                                            <include file="./Application/Home/View/Index/page.html" />
+                                    </div>
+                                </div>
+                                 <!--许愿界面-->
+                                 <include file="./Application/Home/View/Userfemale/wish.html" />
+                                 <!--提示框-->
+                                 <include file="./Application/Home/View/User/attention.html" />
+                            </section>
+                            <!-- close the off-canvas menu -->
+                            <a class="exit-off-canvas"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <script src="__STYLE__/js/foundationjs/vendor/jquery.js"></script>
+        <script src="__STYLE__/js/foundationjs/foundation.min.js"></script>
+        <script src="__STYLE__/js/script.js?foobar"></script>
+        <script src="__STYLE__/js/getjson.js"></script>
+        <script src="__STYLE__/js/index/index.js?foobar"></script>
+        <script src="__STYLE__/js/pray.js?foobar"></script>
+         <script src= "__STYLE__/js/aside.js?foobar"></script>
+        <script>
+        $(document).foundation();
+              //帮助与反馈
+              $('.canvas-help').click(function() {
+                  window.location.href = '/help';
+              });
+
+        </script>
+    </body>
+</html>
